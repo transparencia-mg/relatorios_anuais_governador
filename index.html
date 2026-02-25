@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios de Gestão - Governo de Minas Gerais</title>
+    
+    <!-- ==================== ESTILOS E BIBLIOTECAS ==================== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #29435A;
+            --primary-darker: #0E2F44;
+            --accent-red: #B93C42;
+            --accent-bright: #DB233F;
+            --background-light: #EEEFF5;
+            --success-green: #28a745;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-light);
+            padding-bottom: 30px;
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid var(--accent-red);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-bright) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .header-title {
+            font-weight: 700;
+            font-size: 22px;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .description-area {
+            background: white;
+            border-radius: 10px;
+            padding: 25px 30px;
+            margin: 20px 0 25px 0;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+            border-left: 6px solid var(--accent-red);
+        }
+        
+        .description-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-darker);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .description-title .material-icons {
+            font-size: 28px;
+            color: var(--accent-red);
+        }
+        
+        .description-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .table-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .table-fixed-header-container {
+            position: relative;
+            max-height: 500px;
+            overflow: auto;
+        }
+        
+        .table-fixed-header-container table thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: var(--primary-dark) !important;
+        }
+        
+        .table-fixed-header-container table thead th {
+            background-color: var(--primary-dark) !important;
+            color: white !important;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border: none;
+            padding: 12px 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        
+        .table {
+            margin: 0;
+            width: 100%;
+            font-size: 13px;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .table tbody tr:hover {
+            background-color: rgba(41, 67, 90, 0.04);
+        }
+        
+        .table tbody td {
+            padding: 12px 10px;
+            vertical-align: middle;
+            font-size: 13px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .document-link {
+            color: var(--primary-darker);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-bottom: 1px dashed var(--accent-red);
+        }
+        
+        .document-link:hover {
+            color: var(--accent-red);
+            border-bottom-style: solid;
+        }
+        
+        .btn-export {
+            background: white;
+            border: 2px solid var(--primary-darker);
+            color: var(--primary-dark);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        
+        .btn-export:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+        
+        .data-atualizacao-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .data-atualizacao-box {
+            background: white;
+            border-radius: 8px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+
+        <!-- ÁREA DE DESCRIÇÃO -->
+        <div class="description-area">
+            <h2 class="description-title"><i class="material-icons">account_balance</i> Balanço Geral do Estado</h2>
+            <div class="description-text">
+                <p>O Balanço Geral do Estado demonstra a consolidação dos atos e fatos da Administração Pública estadual e constitui a instrumentalização da transparência da gestão governamental (accountability).</p>
+                <p>Além da prestação de contas a ser apresentada anualmente pelo Governador, como determina a Constituição Estadual nos termos do inciso XII do artigo 90, o Balanço Geral do Estado possibilita à sociedade mineira acompanhar as realizações do Governo de Minas Gerais, proporcionando a todos os cidadãos uma ampla visão da gestão do patrimônio público, bem como da origem e aplicação dos recursos dispostos nos instrumentos de planejamento.</p>
+            </div>
+            
+            <h2 class="description-title" style="margin-top: 30px;"><i class="material-icons">description</i> Relatório de Gestão e Atividades</h2>
+            <div class="description-text">
+                <p>A Mensagem do Governador ou Relatório de Gestão e Atividades é um instrumento por meio do qual o Poder Executivo presta contas à sociedade, tornando públicas suas ações. Instrumento imprescindível no acompanhamento da transparência da situação financeira estadual.</p>
+            </div>
+        </div>
+
+    <div class="container">
+        <!-- DATA DE ATUALIZAÇÃO -->
+        <div class="data-atualizacao-container">
+            <div class="data-atualizacao-box">
+                <span class="material-icons">update</span>
+                Atualizado em: <span id="data-atualizacao-header">Carregando...</span>
+            </div>
+        </div>
+
+
+        <!-- TABELA DE RELATÓRIOS -->
+        <div class="table-container">
+            <div class="table-header">
+                <h3 class="table-title">
+                    <i class="material-icons">inventory</i>
+                    Relatórios Anuais de Gestão
+                </h3>
+                <button class="btn-export" onclick="exportarTabela('tabelaRelatorios')">
+                    <i class="material-icons">download</i>
+                    Exportar CSV
+                </button>
+            </div>
+            <div class="table-fixed-header-container">
+                <table class="table" id="tabelaRelatorios">
+                    <thead>
+                        <tr>
+                            <th>Ano</th>
+                            <th>Balanço Geral do Estado</th>
+                            <th>Relatório de Gestão / Atividades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Os dados serão inseridos via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <p class="text-muted small mt-2">
+            <i class="fas fa-info-circle"></i> 
+            Links para os documentos originais da SEFAZ/MG e Google Drive.
+        </p>
+    </div>
+
+    <script>
+        // Dados dos relatórios anuais
+        const dadosRelatorios = [
+            { ano: "2025", balanco: null, gestao: "https://drive.google.com/drive/folders/1OIvicrF2DlgWV7jqlMOoHn50Pd8mncYO?hl=pt-BR" },
+            { ano: "2024", balanco: "https://www.fazenda.mg.gov.br/governo/contadoria_geral/relatorio_contabil/balanco_2024/index.html", gestao: "https://drive.google.com/drive/folders/1rPFXxjPasvR_PnyUE2_zlb6ZYAR58qh3?hl=pt-BR" },
+            { ano: "2023", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2023/", gestao: "https://drive.google.com/drive/folders/1aZAatjJEhCAORwPqJwLbDckjlRy16W1C?hl=pt-BR" },
+            { ano: "2022", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2022/", gestao: "https://drive.google.com/drive/u/0/folders/1i_CFYxfGEGWbBjRsikt1mUZNYMOiqrEj" },
+            { ano: "2021", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2021/", gestao: "https://drive.google.com/file/d/1Q3Ex0-WNkpzap53_Axe3IYCkmo0LLnQw/view" },
+            { ano: "2020", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2020/", gestao: "https://drive.google.com/drive/folders/1UTADsZp9IRa_F1DSiPiW0PUpKKdG202x" },
+            { ano: "2019", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2019/", gestao: null },
+            { ano: "2018", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2018/", gestao: "https://www.mg.gov.br/planejamento/documento/mensagem-do-governador-2018" },
+            { ano: "2017", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2017/", gestao: "https://www.mg.gov.br/planejamento/documento/mensagem-do-governador-2017" },
+            { ano: "2016", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2016/", gestao: null },
+            { ano: "Exercícios anteriores", balanco: null, gestao: "https://www.mg.gov.br/planejamento/documento/mensagem-do-governador-exercicios-anteriores" }
+        ];
+
+        function renderTabela() {
+            const tbody = document.querySelector('#tabelaRelatorios tbody');
+            if (!tbody) return;
+            
+            let html = '';
+            dadosRelatorios.forEach(item => {
+                const balancoLink = item.balanco 
+                    ? `<a href="${item.balanco}" target="_blank" class="document-link"><i class="fas fa-external-link-alt"></i> Balanço</a>` 
+                    : '<span class="text-muted">—</span>';
+                    
+                const gestaoLink = item.gestao 
+                    ? `<a href="${item.gestao}" target="_blank" class="document-link"><i class="fas fa-external-link-alt"></i> Relatório</a>` 
+                    : '<span class="text-muted">—</span>';
+                    
+                html += `<tr>
+                    <td><strong>${item.ano}</strong></td>
+                    <td>${balancoLink}</td>
+                    <td>${gestaoLink}</td>
+                </tr>`;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function exportarTabela(tabelaId) {
+            const tabela = document.getElementById(tabelaId);
+            if (!tabela) return;
+            
+            let csv = [];
+            const cabecalhos = [];
+            tabela.querySelectorAll('thead th').forEach(th => cabecalhos.push(th.innerText));
+            csv.push(cabecalhos.join(';'));
+            
+            tabela.querySelectorAll('tbody tr').forEach(tr => {
+                const linha = [];
+                tr.querySelectorAll('td').forEach(td => {
+                    let texto = td.innerText.trim().replace(/\n/g, ' ');
+                    if (texto.includes(';') || texto.includes('"')) {
+                        texto = `"${texto.replace(/"/g, '""')}"`;
+                    }
+                    linha.push(texto);
+                });
+                csv.push(linha.join(';'));
+            });
+            
+            const conteudo = csv.join('\n');
+            const blob = new Blob(["\uFEFF" + conteudo], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'relatorios-gestao.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function atualizarData() {
+            const agora = new Date();
+            const dataStr = agora.toLocaleDateString('pt-BR') + ' às ' + agora.toLocaleTimeString('pt-BR');
+            const el = document.getElementById('data-atualizacao-header');
+            if (el) el.textContent = dataStr;
+        }
+
+        window.addEventListener('load', () => {
+            renderTabela();
+            atualizarData();
+            setInterval(atualizarData, 60000);
+        });
+    </script>
+</body>
+</html>
