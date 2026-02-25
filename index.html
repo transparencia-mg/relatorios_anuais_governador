@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julgamento das Contas - Governo de Minas Gerais</title>
+    <title>Relatórios de Gestão - Governo de Minas Gerais</title>
     
     <!-- ==================== ESTILOS E BIBLIOTECAS ==================== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,8 +18,6 @@
             --accent-bright: #DB233F;
             --background-light: #EEEFF5;
             --success-green: #28a745;
-            --warning-yellow: #ffc107;
-            --info-blue: #17a2b8;
         }
         
         body {
@@ -98,16 +96,6 @@
             line-height: 1.7;
             color: #2d3748;
             margin-bottom: 15px;
-        }
-        
-        .description-sub {
-            font-size: 0.9rem;
-            background-color: var(--background-light);
-            padding: 15px 20px;
-            border-radius: 8px;
-            border-left: 4px solid #20B2AA;
-            margin-top: 15px;
-            color: #1e293b;
         }
         
         .table-container {
@@ -200,35 +188,6 @@
             border-bottom-style: solid;
         }
         
-        .tag-situacao {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        
-        .tag-aprovado {
-            background-color: rgba(40, 167, 69, 0.1);
-            color: var(--success-green);
-        }
-        
-        .tag-aprovado-ressalvas {
-            background-color: rgba(255, 193, 7, 0.15);
-            color: #b45b0a;
-        }
-        
-        .tag-em-julgamento {
-            background-color: rgba(23, 162, 184, 0.1);
-            color: var(--info-blue);
-        }
-        
-        .tag-nao-avaliado {
-            background-color: #e9ecef;
-            color: #6c757d;
-        }
-        
         .btn-export {
             background: white;
             border: 2px solid var(--primary-darker);
@@ -275,13 +234,15 @@
     <div class="container">
         <!-- ÁREA DE DESCRIÇÃO -->
         <div class="description-area">
-            <h2 class="description-title"><i class="material-icons">gavel</i> Julgamento das Contas Anuais do Governador</h2>
+            <h2 class="description-title"><i class="material-icons">account_balance</i> Balanço Geral do Estado</h2>
             <div class="description-text">
-                <p>O julgamento das contas anuais do governador é o procedimento constitucional e legal de fiscalização orçamentária, financeira e patrimonial prestadas pelo chefe do Poder Executivo estadual. Consiste na avaliação técnica e política da gestão do estado durante um exercício financeiro, envolvendo a análise de conformidade com leis, limites fiscais e cumprimento de metas.</p>
+                <p>O Balanço Geral do Estado demonstra a consolidação dos atos e fatos da Administração Pública estadual e constitui a instrumentalização da transparência da gestão governamental (accountability).</p>
+                <p>Além da prestação de contas a ser apresentada anualmente pelo Governador, como determina a Constituição Estadual nos termos do inciso XII do artigo 90, o Balanço Geral do Estado possibilita à sociedade mineira acompanhar as realizações do Governo de Minas Gerais, proporcionando a todos os cidadãos uma ampla visão da gestão do patrimônio público, bem como da origem e aplicação dos recursos dispostos nos instrumentos de planejamento.</p>
             </div>
-            <div class="description-sub">
-                <i class="material-icons" style="font-size: 18px; margin-right: 8px; vertical-align: middle;">assignment_late</i> 
-                Incluem: o Relatório de Controle Interno (CGE), a emissão de Parecer pelo Tribunal de Contas (TCE-MG) e o julgamento das contas pela Comissão de Fiscalização Financeira e Orçamentária da Assembleia Legislativa (ALMG).
+            
+            <h2 class="description-title" style="margin-top: 30px;"><i class="material-icons">description</i> Relatório de Gestão e Atividades</h2>
+            <div class="description-text">
+                <p>A Mensagem do Governador ou Relatório de Gestão e Atividades é um instrumento por meio do qual o Poder Executivo presta contas à sociedade, tornando públicas suas ações. Instrumento imprescindível no acompanhamento da transparência da situação financeira estadual.</p>
             </div>
         </div>
 
@@ -293,28 +254,25 @@
             </div>
         </div>
 
-        <!-- TABELA DE JULGAMENTO -->
+        <!-- TABELA DE RELATÓRIOS -->
         <div class="table-container">
             <div class="table-header">
                 <h3 class="table-title">
-                    <i class="material-icons">fact_check</i>
-                    Histórico de Julgamento das Contas
+                    <i class="material-icons">inventory</i>
+                    Relatórios Anuais de Gestão
                 </h3>
-                <button class="btn-export" onclick="exportarTabela('tabelaJulgamento')">
+                <button class="btn-export" onclick="exportarTabela('tabelaRelatorios')">
                     <i class="material-icons">download</i>
                     Exportar CSV
                 </button>
             </div>
             <div class="table-fixed-header-container">
-                <table class="table" id="tabelaJulgamento">
+                <table class="table" id="tabelaRelatorios">
                     <thead>
                         <tr>
                             <th>Ano</th>
-                            <th>Processo</th>
-                            <th>Situação</th>
-                            <th>Parecer Prévio TCEMG</th>
-                            <th>Julgamento ALMG</th>
-                            <th>Relatório CGE</th>
+                            <th>Balanço Geral do Estado</th>
+                            <th>Relatório de Gestão / Atividades</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -326,58 +284,44 @@
         
         <p class="text-muted small mt-2">
             <i class="fas fa-info-circle"></i> 
-            Dados históricos do TCEMG, ALMG e Controladoria-Geral do Estado.
+            Links para os documentos originais da SEFAZ/MG e Google Drive.
         </p>
     </div>
 
     <script>
-        // Dados do julgamento das contas
-        const dadosJulgamento = [
-            { ano: "2024", processo: "1188127", situacao: "Em Julgamento", parecerTCE: "https://www.tce.mg.gov.br/pesquisa_processo.asp?cod_processo=1188127", julgamentoALMG: null, relatorioCGE: "https://www.cge.mg.gov.br/auditoria-interna-governamental/relatorios-de-auditoria/category/129-relatorio-de-controle-interno-rci?download=1371:relatorio-de-controle-interno-contas-do-governo-exercicio-de-2024" },
-            { ano: "2023", processo: "1167016", situacao: "Em Julgamento", parecerTCE: "https://www.tce.mg.gov.br/pesquisa_processo.asp?cod_processo=1167016", julgamentoALMG: null, relatorioCGE: "https://www.cge.mg.gov.br/auditoria-interna-governamental/relatorios-de-auditoria/category/129-relatorio-de-controle-interno-rci?download=1038:relatorio-de-controle-interno-n-1606977-contas-de-governo-do-exercicio-de-2023" },
-            { ano: "2022", processo: "1144601", situacao: "Aprovação", parecerTCE: "https://tcnotas.tce.mg.gov.br/tcjuris/Nota/BuscarArquivo/3810660", julgamentoALMG: null, relatorioCGE: "https://www.cge.mg.gov.br/auditoria-interna-governamental/relatorios-de-auditoria/category/129-relatorio-de-controle-interno-rci?download=1039:relatorio-de-controle-interno-n-1439038-contas-de-governo-do-exercicio-de-2022" },
-            { ano: "2021", processo: "1114783", situacao: "Aprovação", parecerTCE: "https://tcnotas.tce.mg.gov.br/tcjuris/Nota/BuscarArquivo/3648160", julgamentoALMG: null, relatorioCGE: "https://www.cge.mg.gov.br/auditoria-interna-governamental/relatorios-de-auditoria/category/129-relatorio-de-controle-interno-rci?download=1430:relatorio-de-controle-interno-contas-do-governo-exercicio-de-2021" },
-            { ano: "2020", processo: "1101512", situacao: "Aprovado com ressalvas", parecerTCE: "https://tcnotas.tce.mg.gov.br/tcjuris/Nota/BuscarArquivo/3017473", julgamentoALMG: null, relatorioCGE: "https://www.cge.mg.gov.br/auditoria-interna-governamental/relatorios-de-auditoria/category/129-relatorio-de-controle-interno-rci?download=598:relatorio-de-controle-interno-exercicio2020" },
-            { ano: "2019", processo: "1088786", situacao: "Aprovado com ressalvas", parecerTCE: "https://tcnotas.tce.mg.gov.br/tcjuris/Nota/BuscarArquivo/2477146", julgamentoALMG: null, relatorioCGE: "https://www.cge.mg.gov.br/auditoria-interna-governamental/relatorios-de-auditoria/category/129-relatorio-de-controle-interno-rci?download=453:relatorio-de-controle-interno-2020" },
-            { ano: "2018", processo: "1066559", situacao: "Aprovado com ressalvas", parecerTCE: "https://tcnotas.tce.mg.gov.br/tcjuris/Nota/BuscarArquivo/2072805", julgamentoALMG: null, relatorioCGE: "https://www.cge.mg.gov.br/auditoria-interna-governamental/relatorios-de-auditoria/category/129-relatorio-de-controle-interno-rci?download=456:relatorio-de-controle-interno-2019" },
-            { ano: "2017", processo: "1040601", situacao: "Aprovado com ressalvas", parecerTCE: "https://tcnotas.tce.mg.gov.br/tcjuris/Nota/BuscarArquivo/1901895", julgamentoALMG: null, relatorioCGE: null },
-            { ano: "2016", processo: "1007713", situacao: "Aprovação", parecerTCE: "https://tcnotas.tce.mg.gov.br/tcjuris/Nota/BuscarArquivo/1442342", julgamentoALMG: "https://www.almg.gov.br/legislacao-mineira/texto/RAL/5526/2018/", relatorioCGE: null },
-            { ano: "Exercícios anteriores", processo: "", situacao: "", parecerTCE: "https://www.tce.mg.gov.br/noticia/Detalhe/1111625215", julgamentoALMG: "https://www.almg.gov.br/atividade-parlamentar/leis/legislacao-mineira/?pesquisou=true&aba=pesquisa&q=APROVA+AS+CONTAS+DO+GOVERNADOR+DO+ESTADO+EXERC%C3%8DCIO&grupo=&num=&ano=&dataInicio=&dataFim=&sit=&ordem=2", relatorioCGE: null }
+        // Dados dos relatórios anuais
+        const dadosRelatorios = [
+            { ano: "2025", balanco: null, gestao: "https://drive.google.com/drive/folders/1OIvicrF2DlgWV7jqlMOoHn50Pd8mncYO?hl=pt-BR" },
+            { ano: "2024", balanco: "https://www.fazenda.mg.gov.br/governo/contadoria_geral/relatorio_contabil/balanco_2024/index.html", gestao: "https://drive.google.com/drive/folders/1rPFXxjPasvR_PnyUE2_zlb6ZYAR58qh3?hl=pt-BR" },
+            { ano: "2023", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2023/", gestao: "https://drive.google.com/drive/folders/1aZAatjJEhCAORwPqJwLbDckjlRy16W1C?hl=pt-BR" },
+            { ano: "2022", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2022/", gestao: "https://drive.google.com/drive/u/0/folders/1i_CFYxfGEGWbBjRsikt1mUZNYMOiqrEj" },
+            { ano: "2021", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2021/", gestao: "https://drive.google.com/file/d/1Q3Ex0-WNkpzap53_Axe3IYCkmo0LLnQw/view" },
+            { ano: "2020", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2020/", gestao: "https://drive.google.com/drive/folders/1UTADsZp9IRa_F1DSiPiW0PUpKKdG202x" },
+            { ano: "2019", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2019/", gestao: null },
+            { ano: "2018", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2018/", gestao: "https://www.mg.gov.br/planejamento/documento/mensagem-do-governador-2018" },
+            { ano: "2017", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2017/", gestao: "https://www.mg.gov.br/planejamento/documento/mensagem-do-governador-2017" },
+            { ano: "2016", balanco: "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/demonstracoes-contabeis-/balanco-geral-do-estado/balanco-geral-2016/", gestao: null },
+            { ano: "Exercícios anteriores", balanco: null, gestao: "https://www.mg.gov.br/planejamento/documento/mensagem-do-governador-exercicios-anteriores" }
         ];
 
         function renderTabela() {
-            const tbody = document.querySelector('#tabelaJulgamento tbody');
+            const tbody = document.querySelector('#tabelaRelatorios tbody');
             if (!tbody) return;
             
             let html = '';
-            dadosJulgamento.forEach(item => {
-                let badgeClass = 'tag-situacao ';
-                if (item.situacao.includes('Aprovado com ressalvas')) badgeClass += 'tag-aprovado-ressalvas';
-                else if (item.situacao.includes('Aprovação')) badgeClass += 'tag-aprovado';
-                else if (item.situacao.includes('Em Julgamento')) badgeClass += 'tag-em-julgamento';
-                else badgeClass += 'tag-nao-avaliado';
-                
-                const situacaoBadge = `<span class="${badgeClass}">${item.situacao || '—'}</span>`;
-                
-                const parecerLink = item.parecerTCE 
-                    ? `<a href="${item.parecerTCE}" target="_blank" class="document-link"><i class="fas fa-external-link-alt"></i> Parecer</a>` 
-                    : '—';
+            dadosRelatorios.forEach(item => {
+                const balancoLink = item.balanco 
+                    ? `<a href="${item.balanco}" target="_blank" class="document-link"><i class="fas fa-external-link-alt"></i> Balanço</a>` 
+                    : '<span class="text-muted">—</span>';
                     
-                const almgLink = item.julgamentoALMG 
-                    ? `<a href="${item.julgamentoALMG}" target="_blank" class="document-link"><i class="fas fa-external-link-alt"></i> Julgamento</a>` 
-                    : '—';
+                const gestaoLink = item.gestao 
+                    ? `<a href="${item.gestao}" target="_blank" class="document-link"><i class="fas fa-external-link-alt"></i> Relatório</a>` 
+                    : '<span class="text-muted">—</span>';
                     
-                const cgeLink = item.relatorioCGE 
-                    ? `<a href="${item.relatorioCGE}" target="_blank" class="document-link"><i class="fas fa-external-link-alt"></i> RCI</a>` 
-                    : '—';
-                
                 html += `<tr>
                     <td><strong>${item.ano}</strong></td>
-                    <td>${item.processo || '—'}</td>
-                    <td>${situacaoBadge}</td>
-                    <td>${parecerLink}</td>
-                    <td>${almgLink}</td>
-                    <td>${cgeLink}</td>
+                    <td>${balancoLink}</td>
+                    <td>${gestaoLink}</td>
                 </tr>`;
             });
             tbody.innerHTML = html;
@@ -408,7 +352,7 @@
             const blob = new Blob(["\uFEFF" + conteudo], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = 'julgamento-contas.csv';
+            link.download = 'relatorios-gestao.csv';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
