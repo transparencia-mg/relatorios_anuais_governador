@@ -1,0 +1,38 @@
+{
+  "name": "relatorios_anuais_governador",
+  "owner_org": "",
+  "profile": "data-package",
+  "resources": [
+    {
+      "description": "Insira a descrição/explicação detalhada deste recurso.",
+      "dialect": {
+        "delimiter": ";"
+      },
+      "encoding": "utf-8-sig",
+      "format": "csv",
+      "hashing": "md5",
+      "name": "relatorios_anuais_governo",
+      "path": "data/relatorios_anuais_governo.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "ano",
+            "type": "integer"
+          },
+          {
+            "name": "balanco_geral_estado",
+            "type": "string"
+          },
+          {
+            "name": "relatorio_gestao_atividades",
+            "type": "string"
+          }
+        ]
+      },
+      "scheme": "file",
+      "title": "Insira um título humanamente legível para este recurso."
+    }
+  ],
+  "title": "Relatorios_anuais_governador"
+}
